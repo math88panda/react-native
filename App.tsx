@@ -1,14 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler'
+import { enableScreens } from 'react-native-screens'
+import { Provider } from 'react-redux'
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import store from './src/store/mainStore'
+import MainNavigator from './src/navigation/mainNavigator'
 
-export default function App() {
+enableScreens()
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -18,4 +23,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
+
+export default App
